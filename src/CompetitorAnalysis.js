@@ -123,7 +123,7 @@ function CompetitorAnalysis() {
 
   const fetchKeywordAnalysis = useCallback(async () => {
     try {
-      const response = await axios.get("https://web-app4.herokuapp.com/videos");
+      const response = await axios.get("http://localhost:5000/videos");
       setKeywordAnalysis(response.data);
     } catch (err) {
       setError("Failed to fetch keyword analysis.");
@@ -135,7 +135,7 @@ function CompetitorAnalysis() {
     setError(null);
 
     try {
-      const videoResponse = await axios.post("https://web-app4.herokuapp.com/analyze", { username });
+      const videoResponse = await axios.post("http://localhost:5000/analyze", { username });
       if (videoResponse.data.error) throw new Error(videoResponse.data.error);
       setChannelData(videoResponse.data.channelData);
       setVideos(videoResponse.data.videos);
