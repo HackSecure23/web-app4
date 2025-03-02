@@ -10,7 +10,14 @@ const PorterStemmer = natural.PorterStemmer;
 import TfIdf from 'natural/lib/natural/tfidf/tfidf.js';
 
 const app = express();
-app.use(cors());
+
+// CORS Configuration to allow requests from your Netlify domain
+const corsOptions = {
+  origin: 'https://67c3f33cb81cfba49a4969f4--quiet-kangaroo-d1bbad.netlify.app', // Replace with your actual Netlify URL
+  methods: 'GET,POST',
+  allowedHeaders: 'Content-Type,Authorization',
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const API_KEY = 'AIzaSyCh3w2TXdyYnPV_b0u8vXFWrEesZspv_4Q';
@@ -171,4 +178,4 @@ app.get('/videos', async (req, res) => {
 });
 
 const PORT = 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://18.222.116.209:3000:${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on http://18.222.116.209:3000`));
