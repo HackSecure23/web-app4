@@ -122,7 +122,7 @@ function CompetitorAnalysis() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_URL = "http://18.222.116.209:3000"; // Replace with your EC2 public IP
+  const API_URL = "http://18.222.116.209:3001"; // Replace with your EC2 public IP
 
   // Fetch the keyword analysis data
   const fetchKeywordAnalysis = useCallback(async () => {

@@ -177,5 +177,5 @@ app.get('/videos', async (req, res) => {
     res.json({ message: "Real-time analysis only. Use /analyze for competitor data." });
 });
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://18.222.116.209:3000`));
+const PORT = 3001;
+app.listen(PORT, () => console.log(`🚀 Server running on http://18.222.116.209:${PORT}`));
