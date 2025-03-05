@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-// Define styled components
 const Container = styled.div`
   font-family: "San Francisco", Helvetica, "Myriad Set";
   background-color: #f5f5f7;
@@ -122,25 +121,21 @@ function CompetitorAnalysis() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_URL = "http://18.222.116.209:3001"; // Replace with your EC2 public IP
-
-  // Fetch the keyword analysis data
   const fetchKeywordAnalysis = useCallback(async () => {
     try {
-      const response = await axios.get(`${API_URL}/videos`);
+      const response = await axios.get("http://localhost:5000/videos");
       setKeywordAnalysis(response.data);
     } catch (err) {
       setError("Failed to fetch keyword analysis.");
     }
-  }, [API_URL]);
+  }, []);
 
-  // Fetch the competitor's data and analyze it
   const fetchVideos = useCallback(async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const videoResponse = await axios.post(`${API_URL}/analyze`, { username });
+      const videoResponse = await axios.post("http://localhost:5000/analyze", { username });
       if (videoResponse.data.error) throw new Error(videoResponse.data.error);
       setChannelData(videoResponse.data.channelData);
       setVideos(videoResponse.data.videos);
@@ -150,7 +145,7 @@ function CompetitorAnalysis() {
     }
 
     setLoading(false);
-  }, [username, API_URL]);
+  }, [username]);
 
   useEffect(() => {
     fetchKeywordAnalysis();
