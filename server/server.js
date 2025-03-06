@@ -167,8 +167,8 @@ app.post('/analyze', async (req, res) => {
 
 // ✅ **Fetch Last Analysis (No MongoDB)**
 app.get('/videos', async (req, res) => {
-    res.json({ message: "Real-time analysis only. Use /analyze for competitor data." });
+    res.json({ message: "Real-time analysis only. Use /analyze for competitor data." }); //comment
 });
 
 const PORT = 5000;
-app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Server running on http://206.189.187.112:${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Server running on http://localhost:${PORT}`));
